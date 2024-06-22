@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("success");
+          //   reject("fail");
+        }, 1000);
+      });
+
+      p.then((value) =>
+        //   console.log("111")
+        {
+          throw "this is error";
+        }
+      )
+        .then((value) => console.log("222"))
+        .then((value) => console.log("333"))
+        .catch((reason) => console.log(reason));
+      /*
+        所謂的異常穿透就是
+        當p原始的promise成功的時候，任何一個.then中的函數出現錯誤，都會被最後的.catch捕獲
+        進而穿透中間的.then
+        */
+    </script>
+  </body>
+</html>

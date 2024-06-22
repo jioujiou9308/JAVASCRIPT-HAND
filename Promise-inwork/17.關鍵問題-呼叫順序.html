@@ -1,0 +1,34 @@
+<!-- 影片20 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        先說結論
+        new Promise裡面的函數是先執行還是.then這個方法先執行?
+        答案是都有可能
+
+        */
+      let p = new Promise((resolve, reject) => {
+        console.log("1");
+        setTimeout(() => {
+          resolve("成功");
+        }, 1000);
+      });
+      console.log("2");
+      const result = p.then((value) => {
+        console.log(value);
+      });
+      console.log('result', result)
+      console.log("3");
+
+      //   這裡有一個疑惑點是.then的方法和.then方法中的function是分開執行的嗎
+      // 意思是.then方法先執行，然後再執行.then方法中的function，在new Promise是異步任務的情況下
+    </script>
+  </body>
+</html>

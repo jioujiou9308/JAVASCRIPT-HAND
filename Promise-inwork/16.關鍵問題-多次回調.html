@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let p1 = new Promise((resolve, reject) => {
+        resolve("成功");
+      });
+
+      p1.then((value) => console.log("第 1 次回調"));
+      p1.then((value) => console.log("第 2 次回調"));
+      //   只要p1的promise對象狀態改變，就會立即執行then方法中的回調函數
+      // 並且是可以多次回調的
+      // 如果沒有改變狀態，則不會執行
+    </script>
+  </body>
+</html>

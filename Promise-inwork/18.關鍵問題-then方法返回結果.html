@@ -1,0 +1,45 @@
+<!-- 影片21 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let p = new Promise((resolve, reject) => {
+        resolve("成功");
+      });
+
+      const result = p.then((value) => {
+        // 第一種: 丟出錯誤
+        //   throw "失敗1";
+
+        // 第二種: 非promise對象
+        // 這樣result就會是fulfilled狀態，並且返回"123 success"的值
+        // return "123 success";
+
+        // 第三種: promise對象
+        // 裡面的結果決定了result的狀態
+        return new Promise((resolve, reject) => {
+          resolve("成功2");
+          //   reject("失敗2");
+        });
+      });
+      // .then((value) => {
+      //   console.log("原本的p裡面", value);
+      // });
+
+      result.then((value) => {
+        console.log("透過result得到", value);
+      });
+      //   這個result不管如何都會是promise對象
+      console.log("result", result);
+
+      //   這裡看到的結果是，假設我們在第一層.then中返回的是一個promise對象，那麼result的狀態就會根據這個promise對象的狀態來決定
+      //  但如果我們接者在原本的p在接上一個.then就會顯示後面promise的結果
+      // 這個時候result.then就不會有結果
+    </script>
+  </body>
+</html>

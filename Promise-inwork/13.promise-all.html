@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let p1 = new Promise((resolve, reject) => {
+        resolve("p1 成功");
+      });
+      console.log("p1", p1);
+      let p2 = Promise.resolve("p2 成功");
+      let p3 = Promise.resolve("p3 成功");
+      let p4 = Promise.reject("p4 失敗");
+      let result = Promise.all([p1, p2, p3]);
+      console.log(result);
+
+      //   以下失敗會接收到是哪一個promise對象失敗
+      let result2 = Promise.all([p1, p2, p3, p4]);
+      console.log(result2);
+      result2.catch((reason) => {
+        console.log("reason", reason);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!-- 影片22 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("成功1 ");
+        }, 1000);
+      });
+
+      //   .then中返回的就是一個promise對象
+
+      p.then((value) => {
+        console.log(value);
+        return new Promise((resolve, reject) => {
+          resolve("成功2");
+        });
+      })
+        .then((value) => console.log(value))
+        // 這個value3會得到上一個.then中返回的promise對象的結果
+        // 因為上一個的結果沒有返回promise對象，所以這個value3就是undefined
+        .then((value3) => console.log(value3));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 影片14
+
+      // promise.resolve使屬於promise API的一個靜態方法，這個方法會返回一個成功的promise對象
+      // 這個方法並非promise實例的方法，而是promise構造函數的方法
+
+      const p1 = Promise.resolve(100);
+      console.log("p1", p1);
+      // 如果這個promise.resolve 接收的參數是 "非promise" 對象，那麼返回的promise對象的狀態就是resolved
+      // 可以從瀏覽器的log中看到，p1對象的[[Prototype]]/[[PromiseState]]/[[PromiseResult]]都有值
+
+      const p2 = Promise.resolve(
+        new Promise((resolve, reject) => {
+          //   resolve("成功");
+          // -------
+          reject("失敗");
+        })
+      );
+        // 如果這個promise.resolve 接收的參數是 "promise" 對象，那麼返回的promise對象的狀態就是根據這個promise對象的狀態而定
+        // 如果是resolve，那麼返回的promise對象的狀態就是resolved
+        // 如果是reject，那麼返回的promise對象的狀態就是rejected
+        // 有一點注意如果reject沒有使用catch捕獲，那麼會報錯
+      console.log("p2", p2);
+    </script>
+  </body>
+</html>

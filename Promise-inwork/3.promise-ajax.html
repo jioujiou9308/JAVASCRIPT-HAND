@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .text {
+        color: blue;
+      }
+      .btn {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2 class="text">Promise封裝promise操作</h2>
+      <button class="btn" id="btn">點擊發送ajax</button>
+    </div>
+    <script>
+      const btn = document.querySelector("#btn");
+      //  * 一般的ajax操作
+      //   btn.addEventListener("click", function () {
+      //     // 1. 創建對象
+      //     const xhr = new XMLHttpRequest();
+      //     // 2. 設置請求方式和請求地址 /初始化
+      //     xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+      //     // 3. 發送請求
+      //     xhr.send();
+      //     // 4. 處理響應結果
+      //     xhr.onreadystatechange = function () {
+      //       if (xhr.readyState === 4) {
+      //         if (xhr.status >= 200 && xhr.status < 300) {
+      //           console.log(xhr.responseText);
+      //         } else {
+      //           console.log("請求失敗");
+      //           console.log(xhr.status);
+      //         }
+      //       }
+      //     };
+      //   });
+
+      // 使用promise封裝ajax操作
+      btn.addEventListener("click", function () {
+        const p = new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+          xhr.send();
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                resolve(xhr.responseText);
+              } else {
+                reject("請求失敗" + xhr.status);
+              }
+            }
+          };
+        });
+        p.then((value) => {
+          console.log(value);
+        }).catch((reason) => {
+          console.log(reason);
+        });
+      });
+    </script>
+  </body>
+</html>

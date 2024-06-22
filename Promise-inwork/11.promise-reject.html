@@ -1,0 +1,29 @@
+<!-- 15 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 一樣是promise的函數對象，而不是promise的實例對象
+        // 這個函數的作用是返回一個promise對象，這個對象的狀態永遠是rejected
+        // 與promise.resolve永遠都是reject，就算你傳進了promise對象的resolve，也是rejected
+
+        const p1 = Promise.reject((resolve,reject)=>{
+            resolve("成功");
+        });
+        p1.catch((reason)=>{
+            console.log("reason",reason);
+        });
+        console.log("p1",p1);
+
+        const p2 = Promise.reject('124')
+        p2.catch((reason)=>{
+            console.log("reason",reason);
+        });
+    </script>
+</body>
+</html>

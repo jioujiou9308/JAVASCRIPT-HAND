@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let p1 = new Promise((resolve, reject) => {
+        // 第一種方法，使用resolve
+        resolve(42);
+      });
+      console.log("p1", p1);
+
+      let p2 = new Promise((resolve, reject) => {
+        // 第二種方法，使用reject
+        reject(42);
+      });
+      console.log(p2);
+      let p3 = new Promise((resolve, reject) => {
+        // 第三種方法，使用throw
+        // throw "p3 失敗";
+        throw new Error("p3 失敗");
+      });
+      console.log(p3);
+    </script>
+  </body>
+</html>
