@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="btn-group m-4" role="group" aria-label="Basic mixed styles example">
+      <button type="button" class="btn btn-danger mx-2">發送請求</button>
+      <button type="button" class="btn btn-warning mx-2">取消請求</button>
+    </div>
+    <script>
+      const btns = document.querySelectorAll("button");
+
+      // 2. 創建一個全局變數來存儲取消請求的對象
+      let cancel = null;
+
+      btns[0].onclick = function () {
+        // 5. 如果上一次的請求還沒結束(cancel還沒變成null)，那麼就取消上一次的請求
+        if (cancel !== null) {
+          cancel("取消");
+        }
+        axios({
+          method: "GET",
+          url: "http://localhost:3000/posts",
+          //   1. 添加配置對象的屬性
+          cancelToken: new axios.CancelToken((c) => {
+            // 3. 將c的值賦值給全局變數
+            cancel = c;
+          }),
+        })
+          .then((value) => {
+            console.log(value);
+            // 4. 請求成功後，將全局變數賦值為null，這樣下次點擊取消請求的時候，就不會執行取消請求的操作
+            cancel = null;
+          })
+          .catch((err) => console.log("自定義失敗的回調函數"));
+      };
+
+      btns[1].onclick = function () {
+        // 4. 調用全局變數的函數
+        cancel("取消請求");
+      };
+    </script>
+  </body>
+</html>

@@ -1,11 +1,32 @@
 {
   "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "第二篇文章", "views": 200 }
+    {
+      "id": "1",
+      "title": "第 1 篇文章",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "第2篇文章",
+      "views": 142
+    },
+    {
+      "title": "更改後的第3篇文章",
+      "views": 200,
+      "id": "3"
+    }
   ],
   "comments": [
-    { "id": "1", "text": "a comment about post 1", "postId": "1" },
-    { "id": "2", "text": "another comment about post 1111", "postId": "1" }
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1111",
+      "postId": "1"
+    }
   ],
   "profile": {
     "name": "Wei Huang"
