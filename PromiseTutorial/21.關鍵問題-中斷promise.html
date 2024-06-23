@@ -1,0 +1,25 @@
+<!-- 影片24 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let p = new Promise((resolve, reject) => {
+        resolve("成功");
+      });
+
+      // 記住一個要點，只有在promise的狀態改變了，才能進入.then，所以如果要中斷promise練，就是回傳一個pending的狀態
+
+      p.then((value) => {
+        console.log("111");
+        return new Promise((resolve, reject) => {});
+      })
+        .then((value) => console.log("222"))
+        .then((value) => console.log("333"));
+    </script>
+  </body>
+</html>

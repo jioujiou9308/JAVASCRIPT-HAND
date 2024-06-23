@@ -1,0 +1,33 @@
+<!-- 影片 32-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./23.自定義封裝-指定多個回調.js"></script>
+  </head>
+  <body>
+    <script>
+      let p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          //   resolve("1秒後成功");
+          reject("1秒後失敗");
+        }, 1000);
+      });
+
+      p.then(
+        (value) => console.log("value", value),
+        (reason) => console.warn("reason", reason)
+      );
+      p.then(
+        (value) => alert(value),
+        (reason) => alert(reason)
+      );
+
+      /*
+    如果同事使用自定義的封裝兩個回調函數，是沒有辦法的，因為後面的回調函數會覆蓋前面的回調函數
+    */
+    </script>
+  </body>
+</html>

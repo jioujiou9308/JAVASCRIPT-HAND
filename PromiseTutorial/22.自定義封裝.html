@@ -1,0 +1,35 @@
+<!-- 影片25 ~ 31-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./22.自定義封裝.js"></script>
+  </head>
+  <body>
+    <script>
+      // 使用一般的Promise的方法
+      //   let p = new Promise((resolve, reject) => {
+      //     resolve("成功");
+      //     // reject("失敗");
+      //     // throw "拋出失敗";
+      //   });
+
+      // 包裝在setTimeout中
+      let p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("1秒後成功");
+        }, 1000);
+      });
+
+      console.log("p", p);
+
+      p.then(
+        (value) => console.log("value", value),
+        (reason) => console.log("reason", reason)
+      );
+    //   console.log("p2", p);
+    </script>
+  </body>
+</html>
