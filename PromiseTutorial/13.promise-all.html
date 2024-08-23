@@ -15,11 +15,18 @@
       let p3 = Promise.resolve("p3 成功");
       let p4 = Promise.reject("p4 失敗");
       let result = Promise.all([p1, p2, p3]);
-      console.log(result);
+  
+      async function handle(){
+        let result = await Promise.all([p1, p2, p3]);
+        console.log('result222',result);
+      }
+      handle();
+
+      console.log("result", result);
 
       //   以下失敗會接收到是哪一個promise對象失敗
       let result2 = Promise.all([p1, p2, p3, p4]);
-      console.log(result2);
+      console.log('result2',result2);
       result2.catch((reason) => {
         console.log("reason", reason);
       });
