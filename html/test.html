@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>instagram bottom menu main</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        position: relative;
+        background: #282539;
+        min-height: 100vh;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        font-family: "Merriweather";
+      }
+      .container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .container .outer {
+        display: none;
+        position: relative;
+        width: 0;
+        height: 0;
+        transition: all 0.5s ease-out;
+        transform: scale(0);
+        opacity: 0;
+      }
+      .container .outer.active {
+        display: block; /* Added this line */
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 230px;
+        height: 35px;
+        border-radius: 10px;
+        background-color: rgba(21, 21, 21, 0.179);
+        transition: all 0.5s ease-in-out;
+        animation: scaleAnimation 0.5s ease-out forwards;
+        padding: 5px 10px 5px 10px;
+      }
+      .container .inner {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        min-width: 250px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.01);
+        align-items: center;
+        color: aliceblue;
+        padding: 10px 20px 10px 20px;
+        border-radius: 13px;
+      }
+      .inner .icon {
+        position: relative;
+        display: block;
+        font-size: 25px;
+        cursor: pointer;
+        transition: 0.2s ease-in;
+      }
+
+      .icon:hover {
+        scale: 1.2;
+        filter: drop-shadow(0 0 5px var(--clr)) drop-shadow(0 0 15px var(--clr));
+
+        color: var(--clr);
+      }
+      .inner .reel:hover {
+        scale: 1.2;
+        filter: drop-shadow(0 0 5px var(--clr)) drop-shadow(0 0 15px var(--clr));
+        fill: var(--clr);
+      }
+
+      .inner .reel {
+        position: relative;
+        display: block;
+        height: 20px;
+        width: 20px;
+        fill: aliceblue;
+        top: -3px;
+        cursor: pointer;
+        transition: 0.2s ease-in;
+      }
+      @keyframes scaleAnimation {
+        0% {
+          transform: translateX(-50%) scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: translateX(-50%) scale(1.2);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-50%) scale(1);
+          opacity: 1;
+        }
+      }
+      .outer.active .extIcons {
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        font-size: 17px;
+        color: aliceblue;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      .extIcons .ext_svg {
+        position: relative;
+        display: block;
+        fill: aliceblue;
+        width: 14px;
+        height: 14px;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        fill: var(--clr);
+      }
+      .extIcons .post {
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .extIcons .outer_icon {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        cursor: pointer;
+        color: var(--clr);
+      }
+      .outer_icon:hover {
+        filter: drop-shadow(0 0 10px var(--clr)) drop-shadow(0 0 5px var(--clr));
+        scale: 1.1;
+        transition: 0.3s ease;
+      }
+      .outer_icon span {
+        font-size: 8px;
+        color: var(--clr);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="outer" class="outer active">
+        <div class="extIcons">
+          <div class="outer_icon post" style="--clr: rgb(0, 221, 52)">
+            <ion-icon name="image-outline"></ion-icon>
+            <span>Post</span>
+          </div>
+
+          <div class="outer_icon ext_svg" style="--clr: rgb(125, 0, 221)">
+            <svg
+              id="Layer_1"
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 122.64 122.88"
+            >
+              <title>stories</title>
+              <path
+                d="M104,31.15c2.31,5.65,5.11,11.94,6.52,17.55a51.83,51.83,0,0,1,1.54,15.24,50.9,50.9,0,0,1-3,15,49.87,49.87,0,0,1-7.24,13.23A49.12,49.12,0,0,1,91,102.49h0a54.85,54.85,0,0,1-4.74,3q-2.44,1.38-5,2.49a52,52,0,0,1-11.38,3.56,49.5,49.5,0,0,1-11.67.82L57,112.28l-2.76,10.28,1.89.15A60.44,60.44,0,0,0,71.05,122a63,63,0,0,0,14.51-4.42q2.94-1.3,5.83-2.93c1.87-1.06,3.75-2.25,5.62-3.55A59.59,59.59,0,0,0,119,82.48,61.68,61.68,0,0,0,120.7,46.1c-2-5.77-4.18-13.39-8.31-19.22-2.73-3.86-10.73-1.57-8.35,4.27ZM56,44.74a5.34,5.34,0,1,1,10.67,0V56.1H78a5.34,5.34,0,0,1,0,10.68H66.66V78.14a5.34,5.34,0,1,1-10.67,0V66.78H44.62a5.34,5.34,0,1,1,0-10.68H56V44.74ZM24.25,110.36a59.9,59.9,0,0,0,11.46,7l1.69.79,2.75-10.25L39,107.35a49.27,49.27,0,0,1-8.38-5.28,50.34,50.34,0,0,1-7.25-6.93l-.85-1-9.17,5.29,1.18,1.43a61.27,61.27,0,0,0,9.72,9.48ZM.57,69.53A59.49,59.49,0,0,0,4,82.67l.65,1.72,9.17-5.29-.44-1.24a49.32,49.32,0,0,1-2.4-9.72,48.75,48.75,0,0,1-.37-10l.07-1.29L.41,54.15.24,56A58.82,58.82,0,0,0,.57,69.53ZM8.38,31c-.92,1.55-1.75,3.11-2.51,4.7l-.81,1.7,10.25,2.75L15.89,39c.58-1.13,1.19-2.23,1.83-3.29s1.35-2.13,2.1-3.17a61.6,61.6,0,0,1,3.9-4.93A53.89,53.89,0,0,1,28,23.22l.93-.85-5.31-9.21-1.44,1.25a66.4,66.4,0,0,0-5.74,5.65,72.56,72.56,0,0,0-5.15,6.41c-1.05,1.48-2,3-2.92,4.5ZM50.44.78A54.27,54.27,0,0,0,40.27,3.52l-1.74.65,5.3,9.18,1.22-.43a44.39,44.39,0,0,1,15.71-2.43c1.21,0,2.48.11,3.79.26s2.51.33,3.74.58,2.55.56,3.8.93,2.5.8,3.79,1.3h0a5.24,5.24,0,1,0,3.79-9.77C78.15,3.2,76.59,2.67,75,2.2s-3.12-.84-4.65-1.15S67.28.5,65.76.33,62.63.05,61,0A55.87,55.87,0,0,0,50.44.78Z"
+              />
+            </svg>
+            <span>Story</span>
+          </div>
+
+          <div class="outer_icon ext_svg" style="--clr: rgb(221, 0, 133)">
+            <svg
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 122.14 122.88"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  d="M35.14,0H87c9.65,0,18.43,3.96,24.8,10.32c6.38,6.37,10.34,15.16,10.34,24.82v52.61c0,9.64-3.96,18.42-10.32,24.79 l-0.02,0.02c-6.38,6.37-15.16,10.32-24.79,10.32H35.14c-9.66,0-18.45-3.96-24.82-10.32l-0.24-0.27C3.86,105.95,0,97.27,0,87.74 V35.14c0-9.67,3.95-18.45,10.32-24.82S25.47,0,35.14,0L35.14,0z M91.51,31.02l0.07,0.11h21.6c-0.87-5.68-3.58-10.78-7.48-14.69 C100.9,11.64,94.28,8.66,87,8.66h-8.87L91.51,31.02L91.51,31.02z M81.52,31.13L68.07,8.66H38.57l13.61,22.47H81.52L81.52,31.13z M42.11,31.13L28.95,9.39c-4.81,1.16-9.12,3.65-12.51,7.05c-3.9,3.9-6.6,9.01-7.48,14.69H42.11L42.11,31.13z M113.48,39.79H8.66 v47.96c0,7.17,2.89,13.7,7.56,18.48l0.22,0.21c4.8,4.8,11.43,7.79,18.7,7.79H87c7.28,0,13.9-2.98,18.69-7.77l0.02-0.02 c4.79-4.79,7.77-11.41,7.77-18.69V39.79L113.48,39.79z M50.95,54.95l26.83,17.45c0.43,0.28,0.82,0.64,1.13,1.08 c1.22,1.77,0.77,4.2-1,5.42L51.19,94.67c-0.67,0.55-1.53,0.88-2.48,0.88c-2.16,0-3.91-1.75-3.91-3.91V58.15h0.02 c0-0.77,0.23-1.55,0.7-2.23C46.76,54.15,49.19,53.72,50.95,54.95L50.95,54.95L50.95,54.95z"
+                />
+              </g>
+            </svg>
+            <span>Reel</span>
+          </div>
+
+          <div class="outer_icon ext_svg" style="--clr: rgb(221, 77, 0)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="18"
+              height="18"
+              viewBox="0 0 32 32"
+            >
+              <path
+                d="M 6.1015625 6.1015625 C 3.5675625 8.6345625 2 12.134 2 16 C 2 19.866 3.5675625 23.365437 6.1015625 25.898438 L 7.5195312 24.480469 C 5.3465312 22.307469 4 19.308 4 16 C 4 12.692 5.3465312 9.6925313 7.5195312 7.5195312 L 6.1015625 6.1015625 z M 25.898438 6.1015625 L 24.480469 7.5195312 C 26.653469 9.6925312 28 12.692 28 16 C 28 19.308 26.653469 22.307469 24.480469 24.480469 L 25.898438 25.898438 C 28.432437 23.365437 30 19.866 30 16 C 30 12.134 28.432437 8.6345625 25.898438 6.1015625 z M 9.6367188 9.6367188 C 8.0077188 11.265719 7 13.515 7 16 C 7 18.485 8.0077187 20.734281 9.6367188 22.363281 L 11.052734 20.947266 C 9.7847344 19.680266 9 17.93 9 16 C 9 14.07 9.7847344 12.319734 11.052734 11.052734 L 9.6367188 9.6367188 z M 22.363281 9.6367188 L 20.947266 11.052734 C 22.215266 12.319734 23 14.07 23 16 C 23 17.93 22.215266 19.680266 20.947266 20.947266 L 22.363281 22.363281 C 23.992281 20.734281 25 18.485 25 16 C 25 13.515 23.992281 11.265719 22.363281 9.6367188 z M 16 12 A 4 4 0 0 0 16 20 A 4 4 0 0 0 16 12 z"
+              ></path>
+            </svg>
+            <span>Live</span>
+          </div>
+        </div>
+      </div>
+      <div class="inner">
+        <span class="home icon" style="--clr: #0f0"><ion-icon name="home-outline"></ion-icon></span>
+        <span class="search icon" style="--clr: rgb(246, 33, 83)"
+          ><ion-icon name="search-outline"></ion-icon
+        ></span>
+        <span class="plus icon" style="--clr: rgb(236, 255, 63)"
+          ><ion-icon name="add-circle-outline"></ion-icon
+        ></span>
+        <span class="reel" style="--clr: rgb(158, 10, 238)">
+          <svg
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 122.14 122.88"
+            xml:space="preserve"
+          >
+            <g>
+              <path
+                d="M35.14,0H87c9.65,0,18.43,3.96,24.8,10.32c6.38,6.37,10.34,15.16,10.34,24.82v52.61c0,9.64-3.96,18.42-10.32,24.79 l-0.02,0.02c-6.38,6.37-15.16,10.32-24.79,10.32H35.14c-9.66,0-18.45-3.96-24.82-10.32l-0.24-0.27C3.86,105.95,0,97.27,0,87.74 V35.14c0-9.67,3.95-18.45,10.32-24.82S25.47,0,35.14,0L35.14,0z M91.51,31.02l0.07,0.11h21.6c-0.87-5.68-3.58-10.78-7.48-14.69 C100.9,11.64,94.28,8.66,87,8.66h-8.87L91.51,31.02L91.51,31.02z M81.52,31.13L68.07,8.66H38.57l13.61,22.47H81.52L81.52,31.13z M42.11,31.13L28.95,9.39c-4.81,1.16-9.12,3.65-12.51,7.05c-3.9,3.9-6.6,9.01-7.48,14.69H42.11L42.11,31.13z M113.48,39.79H8.66 v47.96c0,7.17,2.89,13.7,7.56,18.48l0.22,0.21c4.8,4.8,11.43,7.79,18.7,7.79H87c7.28,0,13.9-2.98,18.69-7.77l0.02-0.02 c4.79-4.79,7.77-11.41,7.77-18.69V39.79L113.48,39.79z M50.95,54.95l26.83,17.45c0.43,0.28,0.82,0.64,1.13,1.08 c1.22,1.77,0.77,4.2-1,5.42L51.19,94.67c-0.67,0.55-1.53,0.88-2.48,0.88c-2.16,0-3.91-1.75-3.91-3.91V58.15h0.02 c0-0.77,0.23-1.55,0.7-2.23C46.76,54.15,49.19,53.72,50.95,54.95L50.95,54.95L50.95,54.95z"
+              />
+            </g>
+          </svg>
+        </span>
+        <span class="profile icon" style="--clr: rgb(0, 224, 149)"
+          ><ion-icon name="person-circle-outline"></ion-icon
+        ></span>
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+      const outer = document.getElementById("outer");
+      const btn = document.querySelector(".plus");
+
+      btn.addEventListener("click", () => {
+        outer.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
